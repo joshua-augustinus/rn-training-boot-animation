@@ -3,6 +3,7 @@ import { Button, Text, TextInput, TouchableOpacity, View, BackHandler } from 're
 import { SafeAreaView, StackActions } from 'react-navigation';
 import { DrawerActions, NavigationDrawerProp } from 'react-navigation-drawer';
 import Icon from 'react-native-vector-icons/Entypo';
+import { Overlay } from '@src/components/Overlay';
 
 /**
  * https://reactnavigation.org/docs/4.x/typescript
@@ -50,6 +51,7 @@ const MasterScreen = (props: Props) => {
                 <TextInput placeholder="Enter text here..."></TextInput>
                 <Button title="Press me" onPress={() => onButtonPress()}></Button>
             </View>
+            <Overlay isVisible={true} />
         </SafeAreaView>
 
     );
