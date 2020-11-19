@@ -6,6 +6,7 @@ import { Animation2View } from './Animation2View';
 import { ScalingView } from './ScalingView';
 import { Flow } from 'react-native-animated-spinkit';
 import { Animation3View } from './Animation3View';
+import { Animation4View } from './Animation4View';
 
 
 const spinner = {
@@ -34,7 +35,7 @@ const Overlay = (props: Props) => {
             visible={props.isVisible}
             presentationStyle="overFullScreen"
         >
-            <View style={styles.container}>
+            <Animation4View style={styles.container} delay={8000}>
                 <View style={styles.imageContainer}>
                     <Animation3View delay={6800}>
                         <Flow size={60} color={TEXT_LOGO_COLOR} />
@@ -86,7 +87,7 @@ const Overlay = (props: Props) => {
                         <Image style={styles.textImage} source={require('../assets/splash/text_logo.png')} />
                     </Animation2View>
                 </View>
-            </View>
+            </Animation4View>
         </Modal>
     );
 
