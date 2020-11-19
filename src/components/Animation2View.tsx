@@ -13,22 +13,27 @@ interface Props {
 
 const Animation2View: React.FunctionComponent<Props> = (props) => {
     const dynamicValue = useRef(new Animated.Value(props.startValue)).current;
-
-    let transformArray = [{ scale: dynamicValue }];
+    const translateYValue = useRef(new Animated.Value(0)).current;
+    let transformArray = [{ scale: dynamicValue }, { translateY: translateYValue }];
 
     useEffect(() => {
 
-        const animation2 = Animated.spring(dynamicValue, {
+        const animation1 = Animated.spring(dynamicValue, {
             delay: props.delay,
             toValue: props.toValue,
             useNativeDriver: true,
             speed: 6,
             bounciness: 16
         });
+        const animation2 = Animated.timing(translateYValue, {
+            delay: 500,
+            toValue: -80,
+            useNativeDriver: true,
+            duration: 500,
+        });
 
 
-
-        Animated.sequence([animation2]).start();
+        Animated.sequence([animation1, animation2]).start();
     }, [props.toValue]);
 
     return (

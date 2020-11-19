@@ -4,6 +4,8 @@ import Svg, { Ellipse } from 'react-native-svg';
 import { Animation1View } from './Animation1View';
 import { Animation2View } from './Animation2View';
 import { ScalingView } from './ScalingView';
+import { Flow } from 'react-native-animated-spinkit';
+import { Animation3View } from './Animation3View';
 
 
 const spinner = {
@@ -19,7 +21,9 @@ interface Props {
 const TEXT_LOGO_HEIGHT = 120;
 const TEXT_LOGO_WIDTH = 300;
 
-
+const PRIMARY_COLOR = '#00BFD8';
+const SECONDARY_COLOR = '#F89137';
+const TEXT_LOGO_COLOR = '#208EAC';
 
 const Overlay = (props: Props) => {
     const windowWidth = Dimensions.get('window').width;
@@ -31,7 +35,12 @@ const Overlay = (props: Props) => {
             presentationStyle="overFullScreen"
         >
             <View style={styles.container}>
+                <View style={styles.imageContainer}>
+                    <Animation3View delay={6800}>
+                        <Flow size={60} color={TEXT_LOGO_COLOR} />
+                    </Animation3View>
 
+                </View>
                 <ScalingView
                     duration={1000}
                     delay={4000}
@@ -67,6 +76,7 @@ const Overlay = (props: Props) => {
                 >
                     <Image style={styles.triangleImage} source={require('../assets/splash/logo.png')} />
                 </Animation1View>
+
                 <View style={styles.imageContainer}>
                     <Animation2View
                         delay={4800}
