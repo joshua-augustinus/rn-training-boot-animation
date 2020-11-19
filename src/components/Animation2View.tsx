@@ -10,16 +10,15 @@ interface Props {
     startValue?: number;
 }
 
-const DEFAULT_DURATION = 800;
 
-const Animation1View: React.FunctionComponent<Props> = (props) => {
+const Animation2View: React.FunctionComponent<Props> = (props) => {
     const dynamicValue = useRef(new Animated.Value(props.startValue)).current;
-
 
     let transformArray = [{ scale: dynamicValue }];
 
     useEffect(() => {
-        const animation1 = Animated.spring(dynamicValue, {
+
+        const animation2 = Animated.spring(dynamicValue, {
             delay: props.delay,
             toValue: props.toValue,
             useNativeDriver: true,
@@ -29,7 +28,7 @@ const Animation1View: React.FunctionComponent<Props> = (props) => {
 
 
 
-        Animated.sequence([animation1]).start();
+        Animated.sequence([animation2]).start();
     }, [props.toValue]);
 
     return (
@@ -39,4 +38,4 @@ const Animation1View: React.FunctionComponent<Props> = (props) => {
     );
 };
 
-export { Animation1View };
+export { Animation2View };
