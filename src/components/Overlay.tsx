@@ -34,7 +34,7 @@ const Overlay = (props: Props) => {
 
                 <ScalingView
                     duration={1000}
-                    delay={4200}
+                    delay={4000}
                     toValue={1.01}
                     startValue={5.5}
 
@@ -62,14 +62,14 @@ const Overlay = (props: Props) => {
                 </ScalingView>
                 <Animation1View style={styles.imageContainer}
                     delay={500}
-                    toValue={3}
+                    toValue={2}
                     startValue={1}
                 >
                     <Image style={styles.triangleImage} source={require('../assets/splash/logo.png')} />
                 </Animation1View>
                 <View style={styles.imageContainer}>
                     <Animation2View
-                        delay={5000}
+                        delay={4800}
                         toValue={1}
                         startValue={0.01}>
 

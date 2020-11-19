@@ -10,13 +10,12 @@ interface Props {
     startValue?: number;
 }
 
-const DEFAULT_DURATION = 800;
-
 const Animation1View: React.FunctionComponent<Props> = (props) => {
     const dynamicValue = useRef(new Animated.Value(props.startValue)).current;
+    const translateYValue = useRef(new Animated.Value(0)).current;
 
 
-    let transformArray = [{ scale: dynamicValue }];
+    let transformArray = [{ scale: dynamicValue }, { translateY: translateYValue }];
 
     useEffect(() => {
         const animation1 = Animated.spring(dynamicValue, {
@@ -26,10 +25,15 @@ const Animation1View: React.FunctionComponent<Props> = (props) => {
             speed: 6,
             bounciness: 16
         });
+        const animation2 = Animated.timing(translateYValue, {
+            delay: props.delay + 500,
+            toValue: -1000,
+            useNativeDriver: true,
+            duration: 800,
+        });
 
 
-
-        Animated.sequence([animation1]).start();
+        Animated.sequence([animation1, animation2]).start();
     }, [props.toValue]);
 
     return (
